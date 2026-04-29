@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoMission Demo | Revenue Team Diagnostic</title>
+    <meta
+      name="description"
+      content="A conversion-focused CoMission website demo built around revenue team diagnostics, sales ramp, coaching, hiring, and follow-up automation."
+    />
+    <style>
+      :root {
+        --ink: #10141f;
+        --navy: #111827;
+        --blue: #2157ff;
+        --cyan: #13b6d8;
+        --gold: #f5b642;
+        --paper: #f7f8fb;
+        --white: #ffffff;
+        --muted: #637083;
+        --line: rgba(17, 24, 39, 0.13);
+        --shadow: 0 22px 70px rgba(17, 24, 39, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      .container {
+        width: min(1160px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        background: var(--navy);
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 13px;
+      }
+
+      .topbar .container {
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .topbar strong {
+        color: var(--white);
+      }
+
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(247, 248, 251, 0.88);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav {
+        min-height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 28px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 24px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+        display: grid;
+        place-items: center;
+        color: var(--white);
+        background: linear-gradient(135deg, var(--blue), var(--cyan));
+        box-shadow: 0 12px 28px rgba(33, 87, 255, 0.3);
+      }
+
+      .navlinks {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        color: #364153;
+        font-size: 14px;
+        font-weight: 750;
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        padding: 0 18px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 850;
+        transition:
+          transform 160ms ease,
+          box-shadow 160ms ease,
+          background 160ms ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        color: var(--white);
+        background: var(--blue);
+        box-shadow: 0 16px 32px rgba(33, 87, 255, 0.24);
+      }
+
+      .btn-dark {
+        color: var(--white);
+        background: var(--navy);
+      }
+
+      .btn-light {
+        border-color: var(--line);
+        color: var(--navy);
+        background: rgba(255, 255, 255, 0.82);
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 80% 12%, rgba(19, 182, 216, 0.22), transparent 34%),
+          linear-gradient(180deg, #ffffff 0%, #f7f8fb 100%);
+      }
+
+      .hero:before {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 44%;
+        background:
+          linear-gradient(rgba(17, 24, 39, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(17, 24, 39, 0.035) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: linear-gradient(transparent, #000 34%);
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        min-height: calc(100vh - 112px);
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(340px, 0.78fr);
+        align-items: center;
+        gap: 50px;
+        padding: 72px 0 64px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 18px;
+        border: 1px solid rgba(33, 87, 255, 0.18);
+        border-radius: 999px;
+        background: rgba(33, 87, 255, 0.06);
+        color: #1d4ed8;
+        padding: 8px 12px;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 760px;
+        color: #0f172a;
+        font-size: clamp(46px, 7vw, 86px);
+        line-height: 0.94;
+        letter-spacing: -0.045em;
+      }
+
+      .lead {
+        margin: 24px 0 0;
+        max-width: 640px;
+        color: #475569;
+        font-size: clamp(18px, 2vw, 21px);
+        line-height: 1.45;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .proof-strip {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 40px;
+        max-width: 680px;
+      }
+
+      .stat {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 15px;
+      }
+
+      .stat strong {
+        display: block;
+        color: #0f172a;
+        font-size: 28px;
+        line-height: 1;
+        letter-spacing: -0.03em;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 8px;
+        color: #64748b;
+        font-size: 13px;
+        line-height: 1.3;
+      }
+
+      .diagnostic {
+        border: 1px solid rgba(17, 24, 39, 0.1);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .diag-head {
+        background: var(--navy);
+        color: var(--white);
+        padding: 22px;
+      }
+
+      .diag-head span {
+        color: rgba(255, 255, 255, 0.66);
+        font-size: 13px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .diag-head h2 {
+        margin: 8px 0 0;
+        font-size: 27px;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+      }
+
+      .diag-body {
+        padding: 22px;
+      }
+
+      .field {
+        display: grid;
+        gap: 7px;
+        margin-bottom: 13px;
+      }
+
+      .field label {
+        color: #334155;
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        border: 1px solid #d8dee8;
+        border-radius: 8px;
+        background: #ffffff;
+        color: #111827;
+        padding: 12px 13px;
+        outline: none;
+      }
+
+      .field textarea {
+        min-height: 86px;
+        resize: vertical;
+      }
+
+      .microcopy {
+        margin-top: 12px;
+        color: #64748b;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      section {
+        padding: 88px 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 34px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        max-width: 760px;
+        color: #0f172a;
+        font-size: clamp(34px, 5vw, 54px);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+      }
+
+      .section-head p {
+        margin: 0;
+        max-width: 410px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.55;
+      }
+
+      .pain-grid,
+      .method-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .tile {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        padding: 24px;
+        min-height: 230px;
+      }
+
+      .tile .icon {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: #eff6ff;
+        color: var(--blue);
+        font-size: 22px;
+        font-weight: 900;
+      }
+
+      .tile h3 {
+        margin: 22px 0 10px;
+        color: #111827;
+        font-size: 22px;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+      }
+
+      .tile p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .dark-band {
+        background: var(--navy);
+        color: var(--white);
+      }
+
+      .dark-band .section-head h2,
+      .dark-band .tile h3 {
+        color: var(--white);
+      }
+
+      .dark-band .section-head p,
+      .dark-band .tile p {
+        color: rgba(255, 255, 255, 0.68);
+      }
+
+      .dark-band .tile {
+        border-color: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .dark-band .tile .icon {
+        background: rgba(245, 182, 66, 0.16);
+        color: var(--gold);
+      }
+
+      .case-study {
+        display: grid;
+        grid-template-columns: 0.82fr 1fr;
+        gap: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .case-numbers {
+        display: grid;
+        align-content: center;
+        gap: 14px;
+        background:
+          linear-gradient(135deg, rgba(33, 87, 255, 0.9), rgba(19, 182, 216, 0.76)),
+          url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1100&q=80");
+        background-size: cover;
+        background-position: center;
+        color: var(--white);
+        padding: 34px;
+        min-height: 430px;
+      }
+
+      .case-number {
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 8px;
+        padding: 18px;
+        background: rgba(15, 23, 42, 0.24);
+        backdrop-filter: blur(10px);
+      }
+
+      .case-number strong {
+        display: block;
+        font-size: 38px;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .case-number span {
+        display: block;
+        margin-top: 7px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14px;
+      }
+
+      .case-copy {
+        padding: 36px;
+      }
+
+      .case-copy h3 {
+        margin: 0;
+        color: #0f172a;
+        font-size: 34px;
+        line-height: 1.02;
+        letter-spacing: -0.035em;
+      }
+
+      .case-copy p {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.58;
+      }
+
+      .quote {
+        margin-top: 24px;
+        border-left: 4px solid var(--blue);
+        background: #f8fafc;
+        padding: 18px;
+        color: #334155;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .quote cite {
+        display: block;
+        margin-top: 12px;
+        color: #0f172a;
+        font-style: normal;
+        font-weight: 900;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .founder-photo {
+        min-height: 530px;
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(15, 23, 42, 0.02), rgba(15, 23, 42, 0.24)),
+          url("https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1100&q=80");
+        background-size: cover;
+        background-position: center;
+        box-shadow: var(--shadow);
+      }
+
+      .founder-copy h2 {
+        margin: 0;
+        color: #0f172a;
+        font-size: clamp(36px, 5vw, 58px);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+      }
+
+      .founder-copy p {
+        margin: 20px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.62;
+      }
+
+      .checklist {
+        display: grid;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .check {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        color: #334155;
+        font-weight: 750;
+      }
+
+      .check span {
+        width: 24px;
+        height: 24px;
+        display: grid;
+        flex: 0 0 24px;
+        place-items: center;
+        border-radius: 50%;
+        color: var(--white);
+        background: var(--blue);
+        font-size: 13px;
+      }
+
+      .automation {
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, rgba(17, 24, 39, 0.92), rgba(17, 24, 39, 0.78)),
+          url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80");
+        background-size: cover;
+        background-position: center;
+        color: var(--white);
+        padding: 42px;
+      }
+
+      .automation-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .automation h2 {
+        margin: 0;
+        font-size: clamp(34px, 5vw, 56px);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+      }
+
+      .automation p {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 17px;
+        line-height: 1.6;
+      }
+
+      .flow {
+        display: grid;
+        gap: 10px;
+      }
+
+      .flow-step {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 13px 14px;
+      }
+
+      .flow-step b {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        flex: 0 0 30px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--gold);
+        color: #111827;
+      }
+
+      .flow-step span {
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .final-cta {
+        padding: 82px 0;
+        background: #ffffff;
+      }
+
+      .cta-panel {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 28px;
+        align-items: center;
+        border-radius: 8px;
+        background: #0f172a;
+        color: var(--white);
+        padding: 38px;
+      }
+
+      .cta-panel h2 {
+        margin: 0;
+        font-size: clamp(32px, 5vw, 52px);
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .cta-panel p {
+        max-width: 640px;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 16px;
+        line-height: 1.55;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        background: #ffffff;
+        padding: 30px 0;
+        color: #64748b;
+        font-size: 14px;
+      }
+
+      footer .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      @media (max-width: 760px) {
+        .topbar .container,
+        .nav,
+        .section-head,
+        footer .container {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .navlinks {
+          flex-wrap: wrap;
+          justify-content: flex-start;
+        }
+
+        .hero-grid,
+        .case-study,
+        .split,
+        .automation-grid,
+        .cta-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-grid {
+          min-height: auto;
+          padding-top: 48px;
+        }
+
+        .proof-strip,
+        .pain-grid,
+        .method-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .founder-photo {
+          min-height: 380px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .container {
+          width: min(100% - 28px, 1160px);
+        }
+
+        .actions,
+        .hero-actions {
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        section {
+          padding: 62px 0;
+        }
+
+        .automation,
+        .cta-panel {
+          padding: 26px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <span><strong>Demo concept:</strong> repositioning CoMission around booked revenue diagnostics</span>
+        <span>Sales teams that win. Careers that last.</span>
+      </div>
+    </div>
+
+    <header class="header">
+      <nav class="container nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="CoMission home">
+          <span class="brand-mark">C</span>
+          <span>CoMission</span>
+        </a>
+        <div class="navlinks">
+          <a href="#method">Method</a>
+          <a href="#proof">Proof</a>
+          <a href="#founder">Founder</a>
+          <a href="#automation">System</a>
+        </div>
+        <div class="actions">
+          <a class="btn btn-light" href="#sellers">For Sellers</a>
+          <a class="btn btn-primary" href="#diagnostic">Book Diagnostic</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow"><span class="dot"></span> Revenue team diagnostic</div>
+            <h1>Build a sales team that ramps faster, stays longer, and closes more revenue.</h1>
+            <p class="lead">
+              CoMission helps founders and revenue leaders hire, train, coach, and manage sales teams from
+              first rep to repeatable growth.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#diagnostic">Book a Revenue Team Diagnostic</a>
+              <a class="btn btn-light" href="#proof">See the Proof</a>
+            </div>
+            <div class="proof-strip" aria-label="CoMission proof metrics">
+              <div class="stat">
+                <strong>42%</strong>
+                <span>reduced ramp time for sales teams</span>
+              </div>
+              <div class="stat">
+                <strong>700+</strong>
+                <span>salespeople trained and coached</span>
+              </div>
+              <div class="stat">
+                <strong>90%+</strong>
+                <span>rep retention after one year</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="diagnostic" id="diagnostic" aria-label="Book a diagnostic">
+            <div class="diag-head">
+              <span>Start here</span>
+              <h2>Find the bottleneck in your sales team.</h2>
+            </div>
+            <form class="diag-body">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" placeholder="Your name" />
+              </div>
+              <div class="field">
+                <label for="email">Work email</label>
+                <input id="email" type="email" placeholder="you@company.com" />
+              </div>
+              <div class="field">
+                <label for="stage">What are you solving?</label>
+                <select id="stage">
+                  <option>Hiring our first sales rep</option>
+                  <option>Ramping a new team</option>
+                  <option>Fixing quota misses</option>
+                  <option>Reducing turnover</option>
+                  <option>Building a repeatable sales process</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="message">Current sales challenge</label>
+                <textarea id="message" placeholder="What is costing the team momentum right now?"></textarea>
+              </div>
+              <button class="btn btn-primary" type="button" style="width:100%;">Request Diagnostic</button>
+              <p class="microcopy">
+                This demo form would connect to CRM, booking, reminders, no-show follow-up, and nurture automation.
+              </p>
+            </form>
+          </aside>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <h2>You do not have a revenue problem. You have a sales system problem.</h2>
+            <p>
+              Most teams do not fail because the market is impossible. They fail because hiring, onboarding,
+              coaching, messaging, and management are not working together.
+            </p>
+          </div>
+          <div class="pain-grid">
+            <article class="tile">
+              <div class="icon">01</div>
+              <h3>Reps are hired before the playbook is ready.</h3>
+              <p>New sellers inherit guesswork, inconsistent messaging, and unclear expectations.</p>
+            </article>
+            <article class="tile">
+              <div class="icon">02</div>
+              <h3>Ramp takes too long and morale drops.</h3>
+              <p>Without daily coaching and tight feedback loops, potential becomes expensive churn.</p>
+            </article>
+            <article class="tile">
+              <div class="icon">03</div>
+              <h3>Founders become accidental sales managers.</h3>
+              <p>Leadership gets pulled into call reviews, objections, hiring decisions, and pipeline firefighting.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="dark-band" id="method">
+        <div class="container">
+          <div class="section-head">
+            <h2>The CoMission method builds the whole revenue team, not just the org chart.</h2>
+            <p>
+              A focused operating model for teams that need practical sales execution, not another strategy deck.
+            </p>
+          </div>
+          <div class="method-grid">
+            <article class="tile">
+              <div class="icon">H</div>
+              <h3>Hire for the role and the reality.</h3>
+              <p>Define the profile, screen for coachability, and match sellers to the environment where they can win.</p>
+            </article>
+            <article class="tile">
+              <div class="icon">R</div>
+              <h3>Ramp with structure.</h3>
+              <p>Install onboarding, call practice, objections, messaging, scorecards, and early-stage accountability.</p>
+            </article>
+            <article class="tile">
+              <div class="icon">C</div>
+              <h3>Coach until the system sticks.</h3>
+              <p>Run live feedback loops, pipeline reviews, manager coaching, and performance rituals.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="proof">
+        <div class="container">
+          <div class="section-head">
+            <h2>Proof should feel like a business case, not a wall of testimonials.</h2>
+            <p>
+              This demo turns CoMission's strongest claims into a case-study structure founders can understand fast.
+            </p>
+          </div>
+
+          <article class="case-study">
+            <div class="case-numbers">
+              <div class="case-number">
+                <strong>2.3x</strong>
+                <span>more deals closed in six months</span>
+              </div>
+              <div class="case-number">
+                <strong>80%</strong>
+                <span>of reps exceeding quarterly quota</span>
+              </div>
+              <div class="case-number">
+                <strong>65%</strong>
+                <span>of clients doubling pipeline</span>
+              </div>
+            </div>
+            <div class="case-copy">
+              <h3>From scattered sales effort to a repeatable revenue machine.</h3>
+              <p>
+                A founder or revenue leader lands here and sees the story in one motion: where teams stall,
+                what CoMission changes, and how the result shows up in ramp time, pipeline, retention, and closed revenue.
+              </p>
+              <p>
+                Each proof block can become a real case study with client type, starting problem, intervention,
+                timeline, metrics, and testimonial.
+              </p>
+              <blockquote class="quote">
+                "Max and team are trusted advisors that have built successful sales teams across the country in multiple industries."
+                <cite>Sales leader testimonial</cite>
+              </blockquote>
+              <div class="hero-actions">
+                <a class="btn btn-dark" href="#diagnostic">Audit My Sales Ramp</a>
+                <a class="btn btn-light" href="#automation">See Follow-Up System</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="founder">
+        <div class="container split">
+          <div class="founder-photo" role="img" aria-label="Founder-style portrait placeholder"></div>
+          <div class="founder-copy">
+            <div class="eyebrow"><span class="dot"></span> Founder-led trust</div>
+            <h2>Built by someone who has lived the quota, the coaching, and the hard quarters.</h2>
+            <p>
+              The founder story should carry more of the site. CoMission's edge is not software or generic recruiting.
+              It is practical sales leadership with empathy for both the company and the seller.
+            </p>
+            <div class="checklist">
+              <div class="check"><span>✓</span> Recruited, trained, and coached hundreds of sales reps.</div>
+              <div class="check"><span>✓</span> Worked with teams from zero revenue to major growth stages.</div>
+              <div class="check"><span>✓</span> Focused on long-term performance, not seat filling.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="automation">
+        <div class="container automation">
+          <div class="automation-grid">
+            <div>
+              <div class="eyebrow"><span class="dot"></span> Powered by the backend</div>
+              <h2>Every serious visitor gets routed, reminded, and followed up with.</h2>
+              <p>
+                The site should not depend on someone filling out a form and waiting. A CRM automation layer can
+                qualify the lead, book the call, send reminders, recover no-shows, follow up after proposals, and
+                nurture founders who are not ready yet.
+              </p>
+              <a class="btn btn-primary" href="#diagnostic">Build This Funnel</a>
+            </div>
+            <div class="flow">
+              <div class="flow-step"><b>1</b><span>Founder submits diagnostic form</span></div>
+              <div class="flow-step"><b>2</b><span>Lead is routed by company stage and sales challenge</span></div>
+              <div class="flow-step"><b>3</b><span>Calendar booking and reminders trigger automatically</span></div>
+              <div class="flow-step"><b>4</b><span>No-show and post-call follow-up sequences fire</span></div>
+              <div class="flow-step"><b>5</b><span>Long-term nurture converts future-ready buyers</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sellers">
+        <div class="container">
+          <div class="section-head">
+            <h2>Sellers still matter. They just need their own path.</h2>
+            <p>
+              The company buyer should drive the homepage, while sellers get a clear secondary track for career fit,
+              training, and supported sales roles.
+            </p>
+          </div>
+          <div class="pain-grid">
+            <article class="tile">
+              <div class="icon">Fit</div>
+              <h3>Find the right sales environment.</h3>
+              <p>Match sellers with companies that actually invest in onboarding, coaching, and long-term growth.</p>
+            </article>
+            <article class="tile">
+              <div class="icon">OTE</div>
+              <h3>Earn what was promised.</h3>
+              <p>Help reps understand the process, the support, and the activity that turns comp plans into income.</p>
+            </article>
+            <article class="tile">
+              <div class="icon">Grow</div>
+              <h3>Build a career, not just a job.</h3>
+              <p>Keep the career message intact without confusing the primary conversion path for companies.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="container cta-panel">
+          <div>
+            <h2>Ready to turn credibility into booked revenue conversations?</h2>
+            <p>
+              This demo shows how CoMission can move from a broad brochure site to a focused conversion system:
+              clear positioning, case-study proof, diagnostic CTA, CRM routing, booking, and follow-up.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="#diagnostic">Book Diagnostic</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <span>CoMission demo concept prepared by 1stStep.ai</span>
+        <span>Website + funnel + CRM automation + follow-up system</span>
+      </div>
+    </footer>
+  </body>
+</html>
