@@ -524,6 +524,46 @@
         font-weight: 900;
       }
 
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .testimonial-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+        padding: 22px;
+        min-height: 230px;
+        box-shadow: 0 16px 48px rgba(9, 26, 69, 0.08);
+      }
+
+      .testimonial-card p {
+        margin: 0;
+        color: #475569;
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .testimonial-card strong {
+        display: block;
+        margin-top: 18px;
+        color: var(--navy);
+        font-size: 15px;
+      }
+
+      .testimonial-card span {
+        display: block;
+        margin-top: 4px;
+        color: #8a6a19;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
       .split {
         display: grid;
         grid-template-columns: 0.95fr 1.05fr;
@@ -719,7 +759,8 @@
 
         .proof-strip,
         .pain-grid,
-        .method-grid {
+        .method-grid,
+        .testimonial-grid {
           grid-template-columns: 1fr;
         }
 
@@ -949,6 +990,64 @@
               </div>
             </div>
           </article>
+
+          <div class="section-head" style="margin-top:56px;">
+            <h2>Trusted by leaders and sellers who have seen the system work.</h2>
+            <p>
+              These proof cards bring CoMission's existing testimonials forward in a cleaner, conversion-focused way.
+            </p>
+          </div>
+
+          <div class="testimonial-grid" aria-label="CoMission testimonials">
+            <article class="testimonial-card">
+              <p>
+                Max helped SMB and partner sales teams stay on target quarter after quarter with strong reporting,
+                dependable feedback, and hands-on support as the business scaled.
+              </p>
+              <strong>Jonathan Cherins</strong>
+              <span>Sales leadership proof</span>
+            </article>
+            <article class="testimonial-card">
+              <p>
+                Leaders describe CoMission as a trusted advisor for building sales teams, creating differentiation,
+                and turning sellers into consultative revenue producers.
+              </p>
+              <strong>Ray Bonis</strong>
+              <span>GTM leadership proof</span>
+            </article>
+            <article class="testimonial-card">
+              <p>
+                Former sellers credit Max's training, call feedback, coaching, and real-time support with building
+                the confidence and skill needed to succeed long term.
+              </p>
+              <strong>Cameron Hom</strong>
+              <span>Seller development proof</span>
+            </article>
+            <article class="testimonial-card">
+              <p>
+                CoMission's training helped sellers move from early sales roles into closing roles by sharpening
+                fundamentals, objection handling, and communication.
+              </p>
+              <strong>Ben Cruikshank</strong>
+              <span>Career growth proof</span>
+            </article>
+            <article class="testimonial-card">
+              <p>
+                Testimonials consistently point to Max's ability to connect with each person, identify strengths,
+                and coach the details that improve live sales conversations.
+              </p>
+              <strong>Joel Velasquez</strong>
+              <span>Coaching proof</span>
+            </article>
+            <article class="testimonial-card">
+              <p>
+                Sellers say the experience helped them stay in sales, close with more trust, and understand what
+                buyers need to feel confident moving forward.
+              </p>
+              <strong>Oren Katz</strong>
+              <span>Retention proof</span>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -963,9 +1062,9 @@
               It is practical sales leadership with empathy for both the company and the seller.
             </p>
             <div class="checklist">
-              <div class="check"><span>✓</span> Recruited, trained, and coached hundreds of sales reps.</div>
-              <div class="check"><span>✓</span> Worked with teams from zero revenue to major growth stages.</div>
-              <div class="check"><span>✓</span> Focused on long-term performance, not seat filling.</div>
+              <div class="check"><span>+</span> Recruited, trained, and coached hundreds of sales reps.</div>
+              <div class="check"><span>+</span> Worked with teams from zero revenue to major growth stages.</div>
+              <div class="check"><span>+</span> Focused on long-term performance, not seat filling.</div>
             </div>
           </div>
         </div>
