@@ -10,16 +10,16 @@
     />
     <style>
       :root {
-        --ink: #10141f;
-        --navy: #111827;
-        --blue: #2157ff;
-        --cyan: #13b6d8;
-        --gold: #f5b642;
+        --ink: #091a45;
+        --navy: #091a45;
+        --blue: #d4af37;
+        --cyan: #b88924;
+        --gold: #d4af37;
         --paper: #f7f8fb;
         --white: #ffffff;
         --muted: #637083;
         --line: rgba(17, 24, 39, 0.13);
-        --shadow: 0 22px 70px rgba(17, 24, 39, 0.12);
+        --shadow: 0 22px 70px rgba(9, 26, 69, 0.14);
       }
 
       * {
@@ -78,8 +78,8 @@
         position: sticky;
         top: 0;
         z-index: 20;
-        background: rgba(247, 248, 251, 0.88);
-        border-bottom: 1px solid var(--line);
+        background: rgba(9, 26, 69, 0.94);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
         backdrop-filter: blur(18px);
       }
 
@@ -95,20 +95,13 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        font-size: 24px;
-        font-weight: 900;
-        letter-spacing: -0.02em;
       }
 
-      .brand-mark {
-        width: 38px;
-        height: 38px;
-        border-radius: 11px;
-        display: grid;
-        place-items: center;
-        color: var(--white);
-        background: linear-gradient(135deg, var(--blue), var(--cyan));
-        box-shadow: 0 12px 28px rgba(33, 87, 255, 0.3);
+      .brand-logo {
+        width: 192px;
+        max-width: 42vw;
+        height: auto;
+        display: block;
       }
 
       .navlinks {
@@ -116,7 +109,7 @@
         align-items: center;
         justify-content: center;
         gap: 22px;
-        color: #364153;
+        color: rgba(255, 255, 255, 0.78);
         font-size: 14px;
         font-weight: 750;
       }
@@ -149,9 +142,9 @@
       }
 
       .btn-primary {
-        color: var(--white);
-        background: var(--blue);
-        box-shadow: 0 16px 32px rgba(33, 87, 255, 0.24);
+        color: var(--navy);
+        background: var(--gold);
+        box-shadow: 0 16px 32px rgba(212, 175, 55, 0.24);
       }
 
       .btn-dark {
@@ -162,15 +155,23 @@
       .btn-light {
         border-color: var(--line);
         color: var(--navy);
-        background: rgba(255, 255, 255, 0.82);
+        background: rgba(255, 255, 255, 0.92);
+      }
+
+      .header .btn-light,
+      .hero .btn-light {
+        border-color: rgba(255, 255, 255, 0.22);
+        color: var(--white);
+        background: rgba(255, 255, 255, 0.08);
       }
 
       .hero {
         position: relative;
         overflow: hidden;
         background:
-          radial-gradient(circle at 80% 12%, rgba(19, 182, 216, 0.22), transparent 34%),
-          linear-gradient(180deg, #ffffff 0%, #f7f8fb 100%);
+          radial-gradient(circle at 83% 16%, rgba(212, 175, 55, 0.2), transparent 34%),
+          radial-gradient(circle at 10% 12%, rgba(255, 255, 255, 0.1), transparent 28%),
+          linear-gradient(180deg, #091a45 0%, #071333 100%);
       }
 
       .hero:before {
@@ -179,8 +180,8 @@
         inset: auto 0 0;
         height: 44%;
         background:
-          linear-gradient(rgba(17, 24, 39, 0.035) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(17, 24, 39, 0.035) 1px, transparent 1px);
+          linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
         background-size: 42px 42px;
         mask-image: linear-gradient(transparent, #000 34%);
       }
@@ -203,8 +204,8 @@
         margin-bottom: 18px;
         border: 1px solid rgba(33, 87, 255, 0.18);
         border-radius: 999px;
-        background: rgba(33, 87, 255, 0.06);
-        color: #1d4ed8;
+        background: rgba(212, 175, 55, 0.13);
+        color: #f6d36d;
         padding: 8px 12px;
         font-size: 12px;
         font-weight: 900;
@@ -222,7 +223,7 @@
       h1 {
         margin: 0;
         max-width: 760px;
-        color: #0f172a;
+        color: var(--white);
         font-size: clamp(46px, 7vw, 86px);
         line-height: 0.94;
         letter-spacing: -0.045em;
@@ -231,7 +232,7 @@
       .lead {
         margin: 24px 0 0;
         max-width: 640px;
-        color: #475569;
+        color: rgba(255, 255, 255, 0.78);
         font-size: clamp(18px, 2vw, 21px);
         line-height: 1.45;
       }
@@ -254,13 +255,14 @@
       .stat {
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(14px);
         padding: 15px;
       }
 
       .stat strong {
         display: block;
-        color: #0f172a;
+        color: var(--white);
         font-size: 28px;
         line-height: 1;
         letter-spacing: -0.03em;
@@ -269,7 +271,7 @@
       .stat span {
         display: block;
         margin-top: 8px;
-        color: #64748b;
+        color: rgba(255, 255, 255, 0.7);
         font-size: 13px;
         line-height: 1.3;
       }
@@ -289,7 +291,7 @@
       }
 
       .diag-head span {
-        color: rgba(255, 255, 255, 0.66);
+        color: #f6d36d;
         font-size: 13px;
         font-weight: 850;
         letter-spacing: 0.08em;
@@ -393,8 +395,8 @@
         display: grid;
         place-items: center;
         border-radius: 8px;
-        background: #eff6ff;
-        color: var(--blue);
+        background: rgba(212, 175, 55, 0.15);
+        color: #9a7117;
         font-size: 22px;
         font-weight: 900;
       }
@@ -455,7 +457,7 @@
         align-content: center;
         gap: 14px;
         background:
-          linear-gradient(135deg, rgba(33, 87, 255, 0.9), rgba(19, 182, 216, 0.76)),
+          linear-gradient(135deg, rgba(9, 26, 69, 0.94), rgba(212, 175, 55, 0.48)),
           url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1100&q=80");
         background-size: cover;
         background-position: center;
@@ -584,7 +586,7 @@
       .automation {
         border-radius: 8px;
         background:
-          linear-gradient(135deg, rgba(17, 24, 39, 0.92), rgba(17, 24, 39, 0.78)),
+          linear-gradient(135deg, rgba(9, 26, 69, 0.95), rgba(9, 26, 69, 0.78)),
           url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80");
         background-size: cover;
         background-position: center;
@@ -764,8 +766,7 @@
     <header class="header">
       <nav class="container nav" aria-label="Primary navigation">
         <a class="brand" href="#top" aria-label="CoMission home">
-          <span class="brand-mark">C</span>
-          <span>CoMission</span>
+          <img class="brand-logo" src="assets/logo-white.svg" alt="CoMission" />
         </a>
         <div class="navlinks">
           <a href="#method">Method</a>
